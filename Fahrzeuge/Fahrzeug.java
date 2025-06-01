@@ -21,13 +21,15 @@ public class Fahrzeug {
     }
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) return true;
-        if(!(obj instanceof Fahrzeug)) return false;
+        if (this == obj) return true;
+        if (!(obj instanceof Fahrzeug)) return false;
         Fahrzeug other = (Fahrzeug) obj;
-        return this.marke == other.marke && this.baujahr == other.baujahr;
+        return this.marke.equals(other.marke) && this.baujahr == other.baujahr;
     }
+
+    @Override
     public int hashCode() {
-        return marke.hashCode() + baujahr;
+        return marke.hashCode() + baujahr * 31;
     }
    
 }
