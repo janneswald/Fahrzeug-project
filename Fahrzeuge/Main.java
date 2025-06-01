@@ -67,6 +67,7 @@ public class Main {
                     break;
                 case 2:
                     alleFahrzeugeAnzeigen(liste, garage);
+                    break;
                 case 3:
                     running = false;
                     System.out.println("Programm beendet.");
