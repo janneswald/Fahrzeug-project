@@ -2,23 +2,60 @@ package Fahrzeuge;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void fahrzeugHinzufuegen(Scanner scanner, ArrayList<Fahrzeug> liste, HashSet<Fahrzeug> garage) {
-           System.out.println("Wie viele Fahrzeuge möchtest du erstellen?");
-            int anzahl = scanner.nextInt();
-            scanner.nextLine(); // Puffer leeren
+            int anzahl = 0;
+            while (true) {
+                    try {
+                        System.out.println("Wie viele Fahrzeuge möchtest du erstellen?");
+                        anzahl = scanner.nextInt();
+                        scanner.nextLine();
+                        break; // Eingabe okay → raus aus der Schleife
+                    } catch (InputMismatchException e) {
+                        System.out.println("Bitte eine ganze Zahl eingeben!");
+                        scanner.nextLine();
+                    }
+                }
 
             for (int i = 0; i < anzahl; i++) {
-                System.out.println("Marke:");
-                String marke = scanner.nextLine();
-                System.out.println("Baujahr:");
-                int baujahr = scanner.nextInt();
-                scanner.nextLine();
-                System.out.println("PS (0 für Fahrrad):");
-                int ps = scanner.nextInt();
-                scanner.nextLine();
+                String marke = "";
+                int baujahr = 0;
+                int ps = 0;
+                 while (true) {
+                    try {
+                        System.out.print("Marke: ");
+                        marke = scanner.nextLine();
+                        break; // Eingabe okay → raus aus der Schleife
+                    } catch (InputMismatchException e) {
+                        System.out.println("Bitte eine Marke eingeben!");
+                        scanner.nextLine();
+                    }
+                }
+                while (true) {
+                    try {
+                        System.out.print("Baujahr: ");
+                        baujahr = scanner.nextInt();
+                        scanner.nextLine();
+                        break; // Eingabe okay → raus aus der Schleife
+                    } catch (InputMismatchException e) {
+                        System.out.println("Bitte eine ganze Zahl eingeben!");
+                        scanner.nextLine();
+                    }
+                }
+                while (true) {
+                    try {
+                        System.out.print("PS (0 für Fahrrad):");
+                        ps = scanner.nextInt();
+                        scanner.nextLine();
+                        break; // Eingabe okay → raus aus der Schleife
+                    } catch (InputMismatchException e) {
+                        System.out.println("Bitte eine ganze Zahl eingeben!");
+                        scanner.nextLine();
+                    }
+                }
 
                 if (ps > 0) {
                     liste.add(new Auto(marke, baujahr, ps));
@@ -56,10 +93,24 @@ public class Main {
             System.out.println("1. Fahrzeug hinzufügen");
             System.out.println("2. Alle Fahrzeuge anzeigen");
             System.out.println("3. Beenden");
-            System.out.print("Wähle: ");
 
-            int choise = scanner.nextInt();
-            scanner.nextLine(); // Puffer leeren
+            int choise = 0;
+            while (true) {
+                    try {
+                        System.out.print("Wähle: ");
+                        choise = scanner.nextInt();
+                        scanner.nextLine();
+                        if (choise < 1 || choise > 3) {
+                        System.out.println("Bitte eine ganze Zahl zwischen 1 und 3 eingeben!");
+                        continue;
+                    }
+                        break; // Eingabe okay → raus aus der Schleife
+                    } catch (InputMismatchException e) {
+                        System.out.println("Bitte eine ganze Zahl zwischen 1 und 3 eingeben!");
+                        scanner.nextLine();
+                    }
+                    
+                }
 
             switch (choise) {
                 case 1: 
