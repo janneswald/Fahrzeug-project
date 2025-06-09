@@ -57,12 +57,12 @@ public class Main {
                     }
                 }
 
-                if (ps > 0) {
-                    liste.add(new Auto(marke, baujahr, ps));
-                    garage.add(new Auto(marke, baujahr, ps));
-                } else {
+                if (ps == 0) {
                     liste.add(new Fahrrad(marke, baujahr, "rot"));
                     garage.add(new Fahrrad(marke, baujahr, "rot"));
+                } else {
+                    liste.add(new Auto(marke, baujahr, ps));
+                    garage.add(new Auto(marke, baujahr, ps));
                 }
             }     
         }
@@ -79,6 +79,15 @@ public class Main {
             }
         }
     }   
+
+    public static void zeigeFahrzeugeNachTyp(ArrayList<Fahrzeug> liste, FahrzeugTyp typ) {
+        System.out.println("\nFahrzeuge vom Typ: " +  typ);
+        for (Fahrzeug f : liste) {
+            if (f.getTyp() == typ) {
+                System.out.println(f);
+            }
+        }
+    }
     public static void main(String[] args) {
 
         HashSet<Fahrzeug> garage = new HashSet<>(); 
@@ -93,6 +102,8 @@ public class Main {
             System.out.println("1. Fahrzeug hinzufügen");
             System.out.println("2. Alle Fahrzeuge anzeigen");
             System.out.println("3. Beenden");
+            System.out.println("4. Nur Autos anzeigen");
+            System.out.println("5. Nur Fahrräder anzeigen");
 
             int choise = 0;
             while (true) {
@@ -100,8 +111,8 @@ public class Main {
                         System.out.print("Wähle: ");
                         choise = scanner.nextInt();
                         scanner.nextLine();
-                        if (choise < 1 || choise > 3) {
-                        System.out.println("Bitte eine ganze Zahl zwischen 1 und 3 eingeben!");
+                        if (choise < 1 || choise > 5) {
+                        System.out.println("Bitte eine ganze Zahl zwischen 1 und 5 eingeben!");
                         continue;
                     }
                         break; // Eingabe okay → raus aus der Schleife
@@ -122,6 +133,12 @@ public class Main {
                 case 3:
                     running = false;
                     System.out.println("Programm beendet.");
+                    break;
+                case 4:
+                    zeigeFahrzeugeNachTyp(liste, FahrzeugTyp.AUTO);
+                    break;
+                case 5:
+                    zeigeFahrzeugeNachTyp(liste, FahrzeugTyp.FAHRRAD);
                     break;
                 default:
                     System.out.println("Ungültige Eingabe.");

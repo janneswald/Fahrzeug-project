@@ -5,10 +5,16 @@ package Fahrzeuge;
 public class Fahrzeug {
     protected String marke;
     protected int baujahr;
+    protected FahrzeugTyp typ;
 
-    public Fahrzeug(String marke, int baujahr) {
+    public Fahrzeug(String marke, int baujahr, FahrzeugTyp typ) {
         this.marke = marke;
         this.baujahr = baujahr;
+        this.typ = typ;
+    }
+
+    public FahrzeugTyp getTyp() {
+        return typ;
     }
 
     public void fahre() {
@@ -17,7 +23,7 @@ public class Fahrzeug {
 
     @Override
     public String toString() {
-        return marke + " (" + baujahr + ")";
+        return typ + ":" + marke + " (" + baujahr + ")";
     }
     @Override
     public boolean equals(Object obj) {
