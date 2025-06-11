@@ -23,7 +23,7 @@ public class Fahrzeug {
 
     @Override
     public String toString() {
-        return typ + ":" + marke + " (" + baujahr + ")";
+        return typ + ": " + marke + " (" + baujahr + ")";
     }
     @Override
     public boolean equals(Object obj) {

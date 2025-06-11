@@ -8,6 +8,10 @@ public class Fahrrad extends Fahrzeug {
         this.farbe = farbe;
     }
 
+    public String getFarbe() {
+        return farbe;
+    }
+
     @Override
     public void fahre() {
         System.out.println("Das Fahrrad fährt in der Farbe " + farbe + ".");

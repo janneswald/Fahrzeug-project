@@ -8,6 +8,10 @@ public class Auto extends Fahrzeug {
         this.ps = ps;
     }
 
+    public int getPs() {
+        return ps;
+    }
+
     @Override
     public void fahre() {
         System.out.println("Das Auto fährt mit " + ps + " PS.");
