@@ -1,26 +1,32 @@
-# Fahrzeug-Projekt 🚗🚲
+# Fahrzeugverwaltung in Java 🚗🚲
 
-Dies ist ein Java-Übungsprojekt zur Objektorientierten Programmierung (OOP) mit den Konzepten:
-- **Klassen und Objekte**
-- **Vererbung**
-- **Methodenüberschreiben (Polymorphismus)**
-- **ArrayList und HashSet**
-- **equals() und hashCode()**
-- **Benutzereingabe mit Scanner**
-- **Kleine Menüführung (Switch-Case)**
+Ein vollständiges Java-Konsolenprojekt mit OOP, Vererbung, Enums, Dateioperationen und Benutzerinteraktion.
 
-## 📦 Projektstruktur
+## Features
 
-Fahrzeuge/
-├── Auto.java
-├── Fahrrad.java
-├── Fahrzeug.java
-└── Main.java
+- Fahrzeuge (Auto oder Fahrrad) erstellen und speichern
+- Übersicht über alle oder nur bestimmte Fahrzeugtypen
+- Daten werden in `fahrzeuge.txt` gespeichert und geladen
+- Fehlerbehandlung für Benutzereingaben
+- Nutzung von:
+  - `ArrayList` & `HashSet`
+  - `enum` für FahrzeugTyp
+  - `PrintWriter` & `Scanner` für Dateizugriff
+  - `instanceof`, `equals()`, `hashCode()`, `toString()`
 
-## 🚀 Funktionen
+## Beispielausgabe
 
-✅ Fahrzeuge (Auto oder Fahrrad) anlegen  
-✅ Fahrzeuge in einer Liste speichern  
-✅ Alle Fahrzeuge anzeigen  
-✅ HashSet: Duplikate werden erkannt und verhindert  
-✅ Interaktive Menüführung mit Scanner
+Menü:
+
+Fahrzeug hinzufügen
+Alle anzeigen
+Beenden
+Nur Autos anzeigen
+Nur Fahrräder anzeigen
+Speichern
+Laden
+
+
+## Autor
+
+Jannes Wald – Schülerprojekt zur Vorbereitung auf ein duales Studium im Bereich Informatik
