@@ -1,7 +1,5 @@
 package Fahrzeuge;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.InputMismatchException;
@@ -74,11 +72,13 @@ public class Main {
                 }
 
                 if (ps == 0) {
-                    liste.add(new Fahrrad(marke, baujahr, "rot"));
-                    garage.add(new Fahrrad(marke, baujahr, "rot"));
+                    Fahrrad fahrrad = new Fahrrad(marke, baujahr, farbe);
+                    liste.add(fahrrad);
+                    garage.add(fahrrad);
                 } else {
-                    liste.add(new Auto(marke, baujahr, ps));
-                    garage.add(new Auto(marke, baujahr, ps));
+                    Auto auto = new Auto(marke, baujahr, ps);
+                    liste.add(auto);
+                    garage.add(auto);
                 }
             }     
         }
@@ -117,6 +117,7 @@ public class Main {
             }
             writer.close();
             System.out.println("Fahrzeug wurde in \"" + dateiname + "\" gespeichert.");
+            System.out.println("Gespeichert als: " + new File(dateiname).getAbsolutePath());
         } catch (FileNotFoundException e) {
             System.out.println("Fehler beim Speichern: " + e.getMessage());
         }
@@ -163,7 +164,7 @@ public class Main {
             System.out.println("3. Beenden");
             System.out.println("4. Nur Autos anzeigen");
             System.out.println("5. Nur Fahrräder anzeigen");
-            System.out.println("6. Alle Fahrzuege speichern");
+            System.out.println("6. Alle Fahrzeuge speichern");
             System.out.println("7. Fahrzeuge aus Datei laden");
 
             int choise = 0;
