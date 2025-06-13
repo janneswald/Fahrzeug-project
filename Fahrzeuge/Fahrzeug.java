@@ -17,6 +17,8 @@ public class Fahrzeug {
         return typ;
     }
 
+    
+
     public void fahre() {
         System.out.println("Brumm brumm");
     }

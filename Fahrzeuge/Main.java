@@ -27,6 +27,7 @@ public class Main {
                 String marke = "";
                 int baujahr = 0;
                 int ps = 0;
+                String farbe = "";
                  while (true) {
                     try {
                         System.out.print("Marke: ");
@@ -53,6 +54,18 @@ public class Main {
                         System.out.print("PS (0 für Fahrrad):");
                         ps = scanner.nextInt();
                         scanner.nextLine();
+                        if (ps == 0) {
+                            try {
+                                while (true) {
+                                    System.out.print("Farbe: ");
+                                    farbe = scanner.nextLine();
+                                    break;
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Bitte eine Farbe eingeben!");
+                                scanner.nextLine();
+                            }
+                        }
                         break; // Eingabe okay → raus aus der Schleife
                     } catch (InputMismatchException e) {
                         System.out.println("Bitte eine ganze Zahl eingeben!");
@@ -108,7 +121,7 @@ public class Main {
             System.out.println("Fehler beim Speichern: " + e.getMessage());
         }
     }
-    public static void ladeFahrzeuge(ArrayList<Fahrzeug> liste, String dateiname) {
+    public static void ladeFahrzeuge(ArrayList<Fahrzeug> liste, HashSet<Fahrzeug> garage, String dateiname) {
         try {
             Scanner dateiScanner = new Scanner(new File(dateiname));
             while (dateiScanner.hasNextLine()) {
@@ -119,11 +132,13 @@ public class Main {
                     int baujahr = Integer.parseInt(teile[2]);
                     int ps = Integer.parseInt(teile [3]);
                     liste.add(new Auto(marke, baujahr, ps));
+                    garage.add(new Auto(marke, baujahr, ps));
                 } else if (teile[0].equals("FAHRRAD")) {
                     String marke = teile[1];
                     int baujahr = Integer.parseInt(teile[2]);
                     String farbe = teile[3];
                     liste.add(new Fahrrad(marke, baujahr, farbe));
+                    garage.add(new Fahrrad(marke, baujahr, farbe));
                 }
             }
             dateiScanner.close();
@@ -190,7 +205,7 @@ public class Main {
                     speichereFahrzeuge(liste, "fahrzeuge.txt");
                     break;
                 case 7:
-                    ladeFahrzeuge(liste, "fahrzeuge.txt");
+                    ladeFahrzeuge(liste, garage,"fahrzeuge.txt");
                     break;
                 default:
                     System.out.println("Ungültige Eingabe.");
